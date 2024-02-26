@@ -1,0 +1,25 @@
+import math
+#
+total_loan = 1_000_000.0
+interest = 0.05
+amortization = 1000
+horizon_year = 10
+horizon_month = horizon_year * 12
+#Gör om dessa till input
+#Inbetald Ränta
+realized_interest = 0.0
+#Kontroll Inbetald Ränta
+control_realized_interest = 0.0
+for k in range (0,horizon_month,1):
+    loop_interest = total_loan * interest / 12
+    control_realized_interest +=loop_interest
+#Det ska loopas 1 gång per månad, addera betald ränta, justera totala lånet till
+#amorteringen.
+for k in range(0,horizon_month,1):
+    total_loan -=amortization
+    loop_interest = total_loan * interest /12
+    realized_interest +=loop_interest
+    
+print(f"Betald ränta:  {realized_interest:.2f}.")
+print(f"Kvarvarande lån är: {total_loan:.2f}.")
+print(f"Differansen: {realized_interest-control_realized_interest:.2f}.")

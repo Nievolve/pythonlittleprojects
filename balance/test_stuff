@@ -1,0 +1,18 @@
+# Öppna filen i läsläge ('r' står för read)
+def date_read_in ():
+    with open('dates.txt', 'r') as fil:
+        date_list = []
+        # Läs innehållet i filen och spara det i en variabel
+        for rad in fil:
+            # Lägg till varje rad i listan (ta bort eventuella mellanslag eller nya rader i slutet)
+            date_list.append(rad[3:].strip())
+        return date_list
+def linear_search(arr, x):
+    for i in range(len(arr)):
+        if arr[i] == x:
+            return i
+        return -1
+date_list = date_read_in()
+for k in date_list:
+    print(k)
+#print(linear_search(date_list, ""))

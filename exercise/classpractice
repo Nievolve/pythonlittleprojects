@@ -1,0 +1,15 @@
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+p1 = Person("", 40)
+enter_name = input("Namn:")
+enter_age = int(input("Ålder: "))
+sure = input("Är du säker?: ")
+if sure == "nej":
+    del enter_age
+    
+p1 = Person(enter_name, enter_age)
+
+print(p1.name)
+print(p1.age)

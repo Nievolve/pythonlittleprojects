@@ -1,0 +1,18 @@
+#TestValue
+test_loan = 1_000_000.0
+test_interest = 0.05
+test_horizon_year = 1
+kvartal_interest_list = []
+#while True:
+    #a = float(input(""))
+    #pass
+for k in range (0,test_horizon_year,1):
+    loop_interest = 0
+    for k in range(0,4,1):
+        test_loan -= 1000
+        q_interest = float(input("Kvartal ränta: "))
+        loop_interest += test_loan * q_interest /4
+
+
+print(loop_interest)
+print(loop_interest/12)

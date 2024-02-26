@@ -1,0 +1,11 @@
+import sqlite3
+CREATE_TABLE = ""
+def connect():
+    return sqlite3.connect("tdatabase.db")
+
+def create_table(connection):
+    
+    with connection:
+        connection.execute(CREATE_TABLE)
+        pass
+

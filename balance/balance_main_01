@@ -1,0 +1,58 @@
+from datetime import datetime
+
+#Funktion som beräknar betalad ränta om man inte betlar in amortering
+def control(loan_amout,interest,horizon_year):
+    control_realized_interest = 0.0
+    for k in range(0,horizon_year*12,1):
+        monthly_interest = loan_amout * (interest / 12)
+        control_realized_interest +=monthly_interest
+    
+    print("Total betalad ränta UTAN amortering")
+    print(control_realized_interest)
+    return control_realized_interest
+#Funktion som beräknar ut betalad ränta om man månadsvis betalar amortering
+def calculate (loan_amout,interest, horizon_year, amortization):
+    realized_interest = 0.0
+    function_loan=loan_amout
+    for k in range(0,horizon_year*12,1):
+        function_loan -= amortization
+        monthly_interest = function_loan * (interest / 12)
+        realized_interest +=monthly_interest
+    print("Total betald ränta MED amortering")
+    print(realized_interest)
+    return realized_interest
+def interest_list():
+    interest_list = []
+
+    return interest_list
+                            #Lista ränta och datum
+date_list = []
+interest_list = []
+
+# Öppna filen i läsläge ('r' står för read)
+with open('interest.txt', 'r') as fil:
+    # Läs innehållet i filen och spara det i en variabel
+     for rad in fil:
+        # Lägg till varje rad i listan (ta bort eventuella mellanslag eller nya rader i slutet)
+        interest_list.append(rad.strip())
+
+
+# Öppna filen i läsläge ('r' står för read)
+with open('dates.txt', 'r') as fil:
+    # Läs innehållet i filen och spara det i en variabel
+     for rad in fil:
+        # Lägg till varje rad i listan (ta bort eventuella mellanslag eller nya rader i slutet)
+        date_list.append(rad.strip())
+
+#InputStart
+total_loan = 1000_000.0
+interest = 0.05
+amortization = 1_000
+horizon_year = 10
+#InputEnd
+
+#print(amortization*(horizon_year*12)+control(total_loan,interest,horizon_year)-calculate(total_loan,interest,horizon_year,amortization))
+print(control(total_loan,interest,horizon_year)-calculate(total_loan,interest,horizon_year,amortization))
+
+#Ränta A minus ränta B blir skillnaden på vad man "tjänat" på att amortera.
+# Så se det som investering (Amortering+differansen i ränta som avkastning)
